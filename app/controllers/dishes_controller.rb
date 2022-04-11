@@ -29,6 +29,7 @@ class DishesController < ApplicationController
   end
 
   def confirm
+    
   end
 
   private
