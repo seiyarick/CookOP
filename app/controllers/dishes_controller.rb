@@ -8,9 +8,12 @@ class DishesController < ApplicationController
   end
 
   def edit
+    @dish = Dish.find
   end
 
   def show
+    @dish = Dish.find(params[:id])
+    
   end
 
   def create

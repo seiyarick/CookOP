@@ -1,2 +1,11 @@
-<h1>Dishes#show</h1>
-<p>Find me in app/views/dishes/show.html.erb</p>
+<h1>投稿詳細ページ</h1>
+<h3>〇〇さんの料理名</h3>
+<%= image_tag @dish.dish_image, size: "400x400" %>
+<%= @dish.dish_name %>
+<%= @dish.created_at %>
+<%= @dish.introduction %>
+<% if @dish.user_id == current_user.id %>
+<%= link_to "編集", edit_dish_path(@dish.id) %>
+<% end %>
+<!--お気に入り数--><!--お気に入りボタン♡-->
+
