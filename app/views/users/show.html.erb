@@ -6,12 +6,18 @@
 <%= link_to "フォロー数:", relationships_index_follow_path %>
 <%= link_to "フォロワー数:", relationships_index_follower_path %>
 <%= @user.profile %>
-<% if current_user %>
+<% if @user.id == current_user.id %>
 <%= link_to "編集する", edit_user_path(@user.id) %>
 <% end %>
 <h2>投稿記事一覧</h2>
-<%# link_to dish_path(@user.dishes.id) do %>
-<%#= image_tag "@user.dishes.image",size: "100x100" %>
+<%# @dishes.each do |dish| %>
+  <%#= link_to dish_path(dish.id) do %>
+  <%#= image_tag dish.image, size:"100x100" %>
+  <%# end %>
+  <!--お気に入り数-->
+  <%#= dish.created_at %>
+  <%# disn.name %>
 <%# end %>
 
-<%= @user.favorits.count %><!--投稿に対してのお気に入り数-->
+
+
