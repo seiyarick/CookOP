@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   get 'searches/index'
   get 'relationships/index_follow'
   get 'relationships/index_follower'
+  get 'users/confirm' => 'users#confirm'
   resources :dishes, only:[:new, :index, :edit, :show, :create]
-  resources :users, only:[:new, :show, :edit]
+  resources :users, only:[:new, :show, :edit, :update]
 
   # get 'dishes/new'
   # get 'dishes/index'

@@ -1,2 +1,17 @@
 <h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+<%= @user.name %>
+<%= image_tag "noimage",size: "100x100" %>
+<%= @user.favorits.count %>
+<%= link_to "フォロー数:", relationships_index_follow_path %>
+<%= link_to "フォロワー数:", relationships_index_follower_path %>
+<%= @user.profile %>
+<% if current_user %>
+<%= link_to "編集する", edit_user_path(@user.id) %>
+<% end %>
+<h2>投稿記事一覧</h2>
+<%# link_to dish_path(@user.dishes.id) do %>
+<%#= image_tag "@user.dishes.image",size: "100x100" %>
+<%# end %>
+
+<%= @user.favorits.count %><!--投稿に対してのお気に入り数-->
