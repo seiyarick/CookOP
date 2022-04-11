@@ -8,18 +8,27 @@ class DishesController < ApplicationController
   end
 
   def edit
-    @dish = Dish.find
+    @dish = Dish.find(params[:id])
   end
 
   def show
     @dish = Dish.find(params[:id])
-    
+
   end
 
   def create
     @dish = Dish.new(dish_params)
     @dish.save
     redirect_to user_path(current_user.id)
+  end
+
+  def update
+    dish = Dish.find(params[:id])
+    dish.update(dish_params)
+    redirect_to dish_path(dish.id)
+  end
+
+  def confirm
   end
 
   private

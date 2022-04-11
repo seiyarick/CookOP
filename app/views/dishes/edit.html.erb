@@ -1,2 +1,15 @@
 <h1>投稿編集画面</h1>
+<%= form_with model: @dish, url: dish_path(@dish.id), method: :patch do |f| %>
 
+<%= f.label "料理名" %>
+<%= f.text_field :dish_name %>
+
+<%= f.label "料理画像" %>
+<%= f.file_field :dish_image %>
+
+<%= f.label "紹介文" %>
+<%= f.text_area :introduction %>
+
+<%= f.submit "編集する" %>
+<% end %>
+<%= link_to "削除する", dishes_confirm_path %>
