@@ -16,15 +16,13 @@ class DishesController < ApplicationController
   def create
     @dish = Dish.new(dish_params)
     @dish.save
-   
     redirect_to user_path(current_user.id)
-
   end
 
   private
 
   def dish_params
-    params.require(:dish).permit(:dish_name, :introduction, :user_id).merge(user_id: current_user.id)
+    params.require(:dish).permit(:dish_name, :introduction, :user_id, :dish_image).merge(user_id: current_user.id)
 
   end
 

@@ -10,14 +10,14 @@
 <%= link_to "編集する", edit_user_path(@user.id) %>
 <% end %>
 <h2>投稿記事一覧</h2>
-<%# @dishes.each do |dish| %>
-  <%#= link_to dish_path(dish.id) do %>
-  <%#= image_tag dish.image, size:"100x100" %>
-  <%# end %>
+<% @dishes.each do |dish| %>
+  <%= link_to dish_path(dish.id) do %>
+  <%= image_tag dish.dish_image, size: "100x100" %>
+  <% end %>
   <!--お気に入り数-->
-  <%#= dish.created_at %>
-  <%# disn.name %>
-<%# end %>
+  <%= dish.created_at %>
+  <%= dish.dish_name %>
+<% end %>
 
 
 
