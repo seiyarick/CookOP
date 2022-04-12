@@ -5,7 +5,7 @@ class CreateComments < ActiveRecord::Migration[5.2]
       t.timestamps
       t.integer :dish_id
       t.integer :user_id
-      t.text :comment
+      t.text :comment_text
       t.integer :comment_count
     end
   end

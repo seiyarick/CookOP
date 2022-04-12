@@ -14,3 +14,16 @@
 <% end %>
 <!--お気に入り数--><!--お気に入りボタン♡-->
 
+<%= form_with model:[@dish,@comment], url: dish_comments_path(@dish.id), method: :post do |f| %>
+<%= f.label "新規コメント" %>
+<%= f.text_field :comment_text%>
+<%= f.submit "コメント" %>
+<% end %>
+
+<p>コメント件数:<%= @comments.count %></p>
+<% @comments.each do |comment| %>
+<%= image_tag comment.user.profile_image, size: "80x80" %>
+<%= comment.user.name %>
+<%= comment.comment_text %>
+<% end %>
+

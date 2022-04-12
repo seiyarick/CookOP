@@ -14,6 +14,9 @@ class DishesController < ApplicationController
 
   def show
     @dish = Dish.find(params[:id])
+    @comment = Comment.new
+    #binding.pry
+    @comments = @dish.comments
 
   end
 

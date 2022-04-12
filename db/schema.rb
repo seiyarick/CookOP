@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 2022_04_09_064638) do
     t.datetime "updated_at", null: false
     t.integer "dish_id"
     t.integer "user_id"
-    t.text "comment"
+    t.text "comment_text"
     t.integer "comment_count"
   end
 

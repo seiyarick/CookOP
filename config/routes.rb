@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   get 'relationships/index_follower'
   get 'users/confirm' => 'users#confirm'
   get 'dishes/confirm' => 'dishes#confirm'
-  resources :dishes, only:[:new, :index, :edit, :show, :create, :update, :destroy]
+  resources :dishes, only:[:new, :index, :edit, :show, :create, :update, :destroy] do
+   resources :comments, only:[:create, :destroy]
+ end
   resources :users, only:[:new, :show, :edit, :update]
 
   # get 'dishes/new'
