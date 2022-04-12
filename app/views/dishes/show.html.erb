@@ -16,14 +16,19 @@
 
 <%= form_with model:[@dish,@comment], url: dish_comments_path(@dish.id), method: :post do |f| %>
 <%= f.label "新規コメント" %>
-<%= f.text_field :comment_text%>
+<%= f.text_field :comment_text %>
 <%= f.submit "コメント" %>
 <% end %>
 
 <p>コメント件数:<%= @comments.count %></p>
 <% @comments.each do |comment| %>
+<%= link_to user_path(comment.user_id) do %>
 <%= image_tag comment.user.profile_image, size: "80x80" %>
+<% end %>
 <%= comment.user.name %>
 <%= comment.comment_text %>
+<% if comment.user == current_user %>
+<%= link_to "削除", dish_comment_path(comment.dish,comment), method: :delete %>
+<% end %>
 <% end %>
 

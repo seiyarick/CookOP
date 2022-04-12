@@ -9,6 +9,12 @@ class CommentsController < ApplicationController
     comment.save
     redirect_to dish_path(dish.id)
   end
+  
+  def destroy
+    
+    Comment.find(params[:id]).destroy
+    redirect_to dish_path(params[:dish_id])
+  end
 
 
   private
