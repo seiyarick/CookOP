@@ -1,5 +1,10 @@
 <h1>投稿詳細ページ</h1>
-<h3>〇〇さんの料理名</h3>
+<h3>
+  <%= link_to user_path(@dish.user_id) do %>
+  <%= @dish.user.name %>
+  <% end %>
+  さんの料理名
+</h3>
 <%= image_tag @dish.dish_image, size: "400x400" %>
 <%= @dish.dish_name %>
 <%= @dish.created_at %>

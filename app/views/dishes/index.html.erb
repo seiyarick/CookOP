@@ -1,3 +1,8 @@
 <h1>Dishes#index</h1>
-<p>Find me in app/views/dishes/index.html.erb</p>
-aaaaa
+<h3>みんなの投稿</h3>
+<% @dishes.each do |dish| %>
+<%= link_to dish_path(dish.id) do %>
+<%= image_tag dish.dish_image, size: "100x100" %>
+<% end %>
+<%= dish.dish_name %>
+<% end %>

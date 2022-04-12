@@ -5,6 +5,7 @@ class DishesController < ApplicationController
   end
 
   def index
+    @dishes = Dish.all
   end
 
   def edit

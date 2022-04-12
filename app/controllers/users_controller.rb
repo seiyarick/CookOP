@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @profile_image = @user.image
+    @profile_image = @user.profile_image
     @dishes = @user.dishes.all
 
   end
@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
+   
     user.update(user_params)
     redirect_to user_path(user.id)
   end
@@ -25,6 +26,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :image, :profile)
+    params.require(:user).permit(:name, :profile_image, :profile)
   end
 end

@@ -1,7 +1,7 @@
 <h1>Users#show</h1>
 
 <%= @user.name %>
-<%= image_tag "noimage",size: "100x100" %>
+<%= image_tag @user.get_profile_image,size: "100x100" %>
 <%= @user.favorits.count %>
 <%= link_to "フォロー数:", relationships_index_follow_path %>
 <%= link_to "フォロワー数:", relationships_index_follower_path %>
