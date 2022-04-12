@@ -30,7 +30,16 @@ class DishesController < ApplicationController
   end
 
   def confirm
-    
+
+  end
+
+  def destroy
+        @dish = Dish.find(params[:id])
+        if @dish.destroy
+            redirect_to user_path(@dish.user_id)
+        else
+            render :edit
+        end
   end
 
   private

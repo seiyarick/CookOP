@@ -12,4 +12,5 @@
 
 <%= f.submit "編集する" %>
 <% end %>
-<%= link_to "削除する", dishes_confirm_path %>
+<%#= link_to "削除する", dishes_confirm_path %>
+<%= link_to "削除する", dish_path(@dish.id), method: :delete, data: {confirm: "削除しますか？"} %>
