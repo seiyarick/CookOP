@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'users/confirm' => 'users#confirm'
   get 'dishes/confirm' => 'dishes#confirm'
   resources :dishes, only:[:new, :index, :edit, :show, :create, :update, :destroy] do
+   resource :favorites, only:[:create, :destroy]
    resources :comments, only:[:create, :destroy]
  end
   resources :users, only:[:new, :show, :edit, :update]

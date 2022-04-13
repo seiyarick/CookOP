@@ -12,6 +12,20 @@
 <% if @dish.user_id == current_user.id %>
 <%= link_to "編集", edit_dish_path(@dish.id) %>
 <% end %>
+
+<% if @dish.favorited_by?(current_user) %>
+ <p>
+   <%= link_to dish_favorites_path(@dish.id), method: :delete do %>
+   🤍<%= @dish.favorits.count %>いいね
+   <% end %>
+ </p>
+ <% else %>
+ <p>
+   <%= link_to dish_favorites_path(@dish.id), method: :post do %>
+   💙<%= @dish.favorits.count %>いいね
+   <% end %>
+ </p>
+ <% end %>
 <!--お気に入り数--><!--お気に入りボタン♡-->
 
 <%= form_with model:[@dish,@comment], url: dish_comments_path(@dish.id), method: :post do |f| %>
