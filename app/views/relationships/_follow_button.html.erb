@@ -1,0 +1,3 @@
+<% unless current_user == user %>
+ <% if currennt_user.following?(user) %>
+  <%= form_with()

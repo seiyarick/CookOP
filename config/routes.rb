@@ -10,11 +10,17 @@ Rails.application.routes.draw do
   get 'relationships/index_follower'
   get 'users/confirm' => 'users#confirm'
   get 'dishes/confirm' => 'dishes#confirm'
+
   resources :dishes, only:[:new, :index, :edit, :show, :create, :update, :destroy] do
    resource :favorites, only:[:create, :destroy]
    resources :comments, only:[:create, :destroy]
- end
-  resources :users, only:[:new, :show, :edit, :update]
+  end
+
+  resources :users, only:[:new, :show, :edit, :update, :index] do
+   resource :relationships, only: [:create, :destroy]
+   get :followings, on: :member#フォローしてるユーザーの一覧画面on: :memberの記述でidを含める記述
+   get :followers, on: :member#フォローされているユーザーの一覧画面
+  end
 
   # get 'dishes/new'
   # get 'dishes/index'

@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @profile_image = @user.profile_image
     @dishes = @user.dishes.all
-
   end
 
   def edit
@@ -15,12 +14,26 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-   
+
     user.update(user_params)
     redirect_to user_path(user.id)
   end
 
   def confirm
+  end
+
+  def index
+    @users = User.where.not(id: current_user.id)
+  end
+
+  def followings
+    user = User.find(params[:id])
+    @users = user.followings
+  end
+
+  def fuga
+    user = User.find(params[:id])
+    @users = user.followers
   end
 
   private
