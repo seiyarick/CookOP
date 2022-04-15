@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     @users = user.followings
   end
 
-  def fuga
+  def followers
     user = User.find(params[:id])
     @users = user.followers
   end

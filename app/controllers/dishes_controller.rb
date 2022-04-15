@@ -1,11 +1,14 @@
 class DishesController < ApplicationController
+  
   def new
     @dish = Dish.new
 
   end
 
   def index
-    @dishes = Dish.all
+    # @dishes = Dish.all
+    @q = Dish.ransack(params[:q])
+    @searchs = @q.result(distinct: true)
   end
 
   def edit
@@ -15,7 +18,7 @@ class DishesController < ApplicationController
   def show
     @dish = Dish.find(params[:id])
     @comment = Comment.new
-    #binding.pry
+   
     @comments = @dish.comments
 
   end
@@ -34,6 +37,11 @@ class DishesController < ApplicationController
 
   def confirm
 
+  end
+
+  def search
+    @q = Dish.ransack(params[:q])
+   @dishes = @q.result(distinct: true)
   end
 
   def destroy

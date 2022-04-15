@@ -3,5 +3,6 @@ class SearchesController < ApplicationController
   end
 
   def index
+     
   end
 end

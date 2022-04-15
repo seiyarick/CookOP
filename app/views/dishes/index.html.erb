@@ -1,8 +1,22 @@
-<h1>Dishes#index</h1>
-<h3>みんなの投稿</h3>
-<% @dishes.each do |dish| %>
-<%= link_to dish_path(dish.id) do %>
-<%= image_tag dish.dish_image, size: "100x100" %>
+<h1>投稿一覧</h1></h1>
+<%= search_form_for @q do |f| %>
+  <%= f.label :introduction, "Keyword" %>
+  <%= f.search_field :introduction_cont %>
+   <%= f.submit "検索" %>
 <% end %>
-<%= dish.dish_name %>
-<% end %>
+<% @searchs.each do |result| %>
+    <%= image_tag result.dish_image, size: "100x100" %>
+    <%= link_to dish_path(result.id) do %>
+    <%= result.dish_name %>
+    <% end %>
+  <% end %>
+
+<%# @dishes.each do |dish| %>
+<%#= link_to dish_path(dish.id) do %>
+<%#= image_tag dish.dish_image, size: "100x100" %>
+<%# end %>
+<%#= dish.dish_name %>
+<%# end %>
+
+
+
