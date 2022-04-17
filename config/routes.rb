@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'users/confirm' => 'users#confirm'
   get 'dishes/confirm' => 'dishes#confirm'
   get 'dishes/search' => 'dishes#search'
+  get 'dishes/ranking' => 'dishes#ranking'
 
   resources :dishes, only:[:new, :index, :edit, :show, :create, :update, :destroy, :search] do
    resource :favorites, only:[:create, :destroy]
