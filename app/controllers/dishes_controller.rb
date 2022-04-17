@@ -1,9 +1,14 @@
 class DishesController < ApplicationController
-  
+
   def new
     @dish = Dish.new
 
   end
+
+  def ranking
+    @all_ranks = Dish.create_all_ranks
+  end
+
 
   def index
     # @dishes = Dish.all
@@ -18,7 +23,7 @@ class DishesController < ApplicationController
   def show
     @dish = Dish.find(params[:id])
     @comment = Comment.new
-   
+
     @comments = @dish.comments
 
   end

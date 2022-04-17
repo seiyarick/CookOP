@@ -21,7 +21,8 @@ class UsersController < ApplicationController
 
   def confirm
   end
-
+  
+  
   def index
     @users = User.where.not(id: current_user.id)
   end

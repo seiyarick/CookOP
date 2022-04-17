@@ -1,1 +1,9 @@
 <h3>お気に入りランキング</h3>
+<% @all_ranks.each.with_index(1) do |dish,i| %>
+第<%= i %>位
+<%= link_to dish_path(dish.id) do %>
+<%= dish.dish_name %>
+<% end %>
+<%= image_tag dish.dish_image, size: "100x100" %>
+
+<% end %>
