@@ -4,6 +4,10 @@
 <%= link_to dish_path(dish.id) do %>
 <%= dish.dish_name %>
 <% end %>
+投稿者
+<%= link_to user_path(dish.user_id) do %>
+<%= dish.user.name %>
+<% end %>
+❤いいね数️<%= dish.favorits.count %>
 <%= image_tag dish.dish_image, size: "100x100" %>
-
 <% end %>

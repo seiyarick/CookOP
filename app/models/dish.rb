@@ -7,9 +7,9 @@ class Dish < ApplicationRecord
   def favorited_by?(user)
     favorits.exists?(user_id: user.id)
   end
-  
+
   def self.create_all_ranks
-    Dish.find(Favorit.group(:dish_id).order('count(dish_id) desc').limit(10).pluck(:dish_id))
-  end  
+    Dish.find(Favorit.group(:dish_id).where(created_at: Time.current.all_week).order('count(dish_id) desc').limit(10).pluck(:dish_id))
+  end
 
 end
