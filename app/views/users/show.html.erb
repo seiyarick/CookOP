@@ -1,36 +1,69 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-4 ">
+      <div class="row justify-content-center mb-4">
+        <%= image_tag @user.get_profile_image,size: "200x200",class:"rounded-circle mx-auto" %>
+      </div>
+      <table class="table mx-auto">
+        <tbody>
+          <tr>
+            <td class="align-middle text-center">
+            <%= @user.name %>
+            </td>
+          </tr>
+          <tr>
+            <td class="align-middle text-center">
+            <%= @user.favorits.count %>
+            </td>
+          </tr>
+          <tr>
+            <div class="row">
+                <td class="align-middle text-center col-6">
+                <%= link_to followings_user_path(@user.id),class:"mr-5" do %>
+                  フォロー<%= @user.followings.count %>
+                <% end %>
+                <%= link_to followers_user_path(@user.id) do %>
+                  フォロワー<%= @user.followers.count %>
+                <% end %>
+                </td>
+            </div>
+          </tr>
+          <tr>
+            <td class="align-middle text-center">
+            <%= @user.profile %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <% if @user.id != current_user.id %>
+        <% if @user.is_followed_by?(current_user) %>
+        <%= link_to "フォロー解除",user_relationships_path(@user.id), method: :delete %>
+        <% else %>
+        <%= link_to "フォロー",user_relationships_path(@user.id), method: :post %>
+        <% end %>
+      <% end %>
+      <div class="text-center">
+       <% if @user.id == current_user.id %>
+        <%= link_to "編集する", edit_user_path(@user.id), class:"btn btn-light" %>
+       <% end %>
+      </div>
+    </div>
+    <div class="col-lg-8 mt-4">
+      <h2 class="mb-4 text-center">投稿記事一覧</h2>
+      <% @dishes.each do |dish| %>
+      <div class="mx-2 my-2">
+        <%= link_to dish_path(dish.id) do %>
+        <div class="img"><%= image_tag dish.dish_image, size: "150x110" %></div>
+        <% end %>
+        <%= dish.dish_name %><br>
+        <i class="fa-solid fa-heart fa-fw faa-wrench animated-hover" style="color: #ff6347;"></i> <%= dish.favorits.count %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<%= @user.name %>
-<%= image_tag @user.get_profile_image,size: "200x200",class:"rounded-circle" %>
-<%= @user.favorits.count %>
-<%= link_to followings_user_path(@user.id) do %>
-フォロー<%= @user.followings.count %>
-<% end %>
-<%= link_to followers_user_path(@user.id) do %>
-フォロワー<%= @user.followers.count %>
-<% end %>
-<% if @user.id != current_user.id %>
-  <% if @user.is_followed_by?(current_user) %>
-  <%= link_to "フォロー解除",user_relationships_path(@user.id), method: :delete %>
-  <% else %>
-  <%= link_to "フォロー",user_relationships_path(@user.id), method: :post %>
-  <% end %>
-<% end %>
 
-<%= @user.profile %>
-
-<% if @user.id == current_user.id %>
-<%= link_to "編集する", edit_user_path(@user.id) %>
-<% end %>
-
-<h2>投稿記事一覧</h2>
-<% @dishes.each do |dish| %>
-  <%= link_to dish_path(dish.id) do %>
-  <%= image_tag dish.dish_image, size: "100x100" %>
-  <% end %>
-  <!--お気に入り数-->
-  <%= dish.created_at %>
-  <%= dish.dish_name %>
-<% end %>
 
 
 
