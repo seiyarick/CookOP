@@ -1,7 +1,6 @@
-<h1>Users#show</h1>
 
 <%= @user.name %>
-<%= image_tag @user.get_profile_image,size: "100x100" %>
+<%= image_tag @user.get_profile_image,size: "200x200",class:"rounded-circle" %>
 <%= @user.favorits.count %>
 <%= link_to followings_user_path(@user.id) do %>
 フォロー<%= @user.followings.count %>
