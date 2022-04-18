@@ -17,13 +17,13 @@
 <% if @dish.favorited_by?(current_user) %>
  <p>
    <%= link_to dish_favorites_path(@dish.id), method: :delete do %>
-   <i class="fa-solid fa-heart"></i><%= @dish.favorits.count %>いいね
+   <i class="fa-solid fa-heart faa-wrench animated-hover"></i><%= @dish.favorits.count %>いいね
    <% end %>
  </p>
  <% else %>
  <p>
    <%= link_to dish_favorites_path(@dish.id), method: :post do %>
-   <i class="fa-regular fa-heart"></i><%= @dish.favorits.count %>いいね
+   <i class="fa-regular fa-heart faa-wrench animated-hover"></i><%= @dish.favorits.count %>いいね
    <% end %>
  </p>
  <% end %>

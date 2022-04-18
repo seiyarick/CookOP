@@ -7,50 +7,79 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css">
     <script src="https://kit.fontawesome.com/05131a82ca.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome-animation/0.2.1/font-awesome-animation.css" type="text/css" media="all" />
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <!--ロゴ、リンク-->
+      <nav class="navbar navbar-expand-xl navbar-light bg-light">
+        <%= image_tag "logo.png",size: "200x100", class: "mr-5 ml-3"%><!--ロゴ、リンク-->
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="レスポンシブ・ナビゲーションバー">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="Navber">
-          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <% if user_signed_in? %>
 
-            <li class="nav-item active">
-             <i class="fa-solid fa-house-chimney"></i><%= link_to "トップページ", root_path, class:"btn btn-success btn-sm" %>
-            </li>
-            <li class="nav-item">
-              <i class="fa-solid fa-crown"></i><%= link_to "いいねランキング", dishes_ranking_path %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "CookOPする", new_dish_path %>
-            </li>
-            <li class="nav-item">
-              <i class="fa-solid fa-circle-user"></i><%= link_to "ユーザー一覧", users_path %>
-            </li>
-            <li class="nav-item">
-              <i class="fa-regular fa-image"></i><%= link_to "みんなの投稿", dishes_path %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "マイページ", user_path(current_user.id) %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログアウト",  destroy_user_session_path, method: :delete %>
-            </li>
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <% if user_signed_in? %>
+            <div class="my-auto mr-5">
+              <li class="nav-item active mr-3">
+                <%= link_to  root_path, class:"btn btn-light" do %>
+               <i class="fa-solid fa-house-chimney fa-fw faa-wrench animated-hover" style="color:#BDB76B;"></i>トップページ
+               <% end %>
+              </li>
+              <li class="nav-item mr-3">
+                <%= link_to dishes_ranking_path, class:"btn btn-light" do %>
+                <i class="fa-solid fa-crown fa-fw faa-wrench animated-hover" style="color:#FFD700;"></i>いいねランキング
+                <% end %>
+              </li>
+            </div>
+            <div class="my-auto mr-5">
+              <li class="nav-item mr-3">
+                <%= link_to new_dish_path, class:"btn btn-light" do %>
+                <i class="fa-solid fa-utensils fa-fw faa-wrench animated-hover" style="color:#FF6347;"></i>CookOPする
+                <% end %>
+              </li>
+              <li class="nav-item mr-3">
+                <%= link_to users_path, class:"btn btn-light" do %>
+                <i class="fa-solid fa-users fa-fw faa-wrench animated-hover" style="color:#66CDAA;"></i>ユーザー一覧
+                <% end %>
+              </li>
+            </div>
+            <div class="my-auto mr-5">
+              <li class="nav-item mr-3">
+                <%= link_to dishes_path, class:"btn btn-light" do %>
+                <i class="fa-regular fa-image fa-fw faa-wrench animated-hover" style="color:#32CD32;"></i>みんなの投稿
+                <% end %>
+              </li>
+              <li class="nav-item mr-3">
+                <%= link_to  user_path(current_user.id), class:"btn btn-light" do %>
+                <%= image_tag "user.png",size: "20x20" %>マイページ
+                <% end %>
+              </li>
+            </div>
+            <div class="my-auto mr-5">
+              <li class="nav-item mr-3">
+                 <%= link_to destroy_user_session_path, method: :delete, class:"btn btn-light" do %>
+                 <%= image_tag "log_out.png",size: "20x20" %>ログアウト
+                 <% end %>
+              </li>
+            </div>
             <% else %>
-            <li class="nav-item">
-              <%= link_to "About", homes_about_path %>
+            <li class="nav-item mr-3">
+              <%= link_to homes_about_path, class:"btn btn-light" do %>
+              <i class="fa-regular fa-eye"></i>About
+              <% end %>
             </li>
-            <li class="nav-item">
-              <%= link_to "新規登録", new_user_registration_path %>
+            <li class="nav-item mr-3">
+              <%= link_to new_user_registration_path, class:"btn btn-light" do %>
+              <%= image_tag "new.png",size: "20x20" %>新規登録
+              <% end %>
             </li>
-            <li class="nav-item">
-              <%= link_to "ログイン", new_user_session_path %>
+            <li class="nav-item mr-3">
+             <%= link_to new_user_session_path, class:"btn btn-light" do %>
+             <%= image_tag "log_in.black.png",size: "20x20" %>ログイン
+             <% end %>
             </li>
             <% end %>
           </ul>
