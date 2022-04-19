@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @profile_image = @user.profile_image
-    @dishes = @user.dishes.all
+    @dishes = @user.dishes.all.order("id DESC")
   end
 
   def edit
@@ -21,8 +21,8 @@ class UsersController < ApplicationController
 
   def confirm
   end
-  
-  
+
+
   def index
     @users = User.where.not(id: current_user.id)
   end

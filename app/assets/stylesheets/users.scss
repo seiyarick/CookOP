@@ -4,3 +4,11 @@
 img {
   border-radius: 8%;
 }
+
+.images{
+  display: flex;
+  flex-wrap: wrap
+}
+.dish_image{
+  width: 25%
+}

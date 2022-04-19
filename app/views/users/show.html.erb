@@ -50,19 +50,21 @@
     </div>
     <div class="col-lg-8 mt-4">
       <h2 class="mb-4 text-center">投稿記事一覧</h2>
-      <% @dishes.each do |dish| %>
-      <div class="mx-2 my-2">
-        <%= link_to dish_path(dish.id) do %>
-        <div class="img"><%= image_tag dish.dish_image, size: "150x110" %></div>
+      <div class="images">
+        <% @dishes.each do |dish| %>
+        <div class="dish_image text-center mb-4">
+          <%= link_to dish_path(dish.id) do %>
+          <div class="img"><%= image_tag dish.dish_image, size: "150x110" %></div>
+          <% end %>
+          <%= dish.created_at.strftime('%Y/%m/%d') %><br>
+          <%= dish.dish_name %><br>
+          <i class="fa-solid fa-heart fa-fw faa-wrench animated-hover" style="color: #ff6347;"></i> <%= dish.favorits.count %>
+        </div>
         <% end %>
-        <%= dish.dish_name %><br>
-        <i class="fa-solid fa-heart fa-fw faa-wrench animated-hover" style="color: #ff6347;"></i> <%= dish.favorits.count %>
       </div>
-      <% end %>
-    </div>
+   </div>
   </div>
 </div>
-
 
 
 
