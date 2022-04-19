@@ -1,6 +1,6 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
-    <div class="col-4 ">
+    <div class="col-lg-4 ">
       <div class="row justify-content-center mb-4">
         <%= image_tag @user.get_profile_image,size: "200x200",class:"rounded-circle mx-auto" %>
       </div>
@@ -13,12 +13,12 @@
           </tr>
           <tr>
             <td class="align-middle text-center">
-            <%= @user.favorits.count %>
+            <%= @favorits_count %>
             </td>
           </tr>
           <tr>
             <div class="row">
-                <td class="align-middle text-center col-6">
+                <td class="align-middle text-center col-xl-6">
                 <%= link_to followings_user_path(@user.id),class:"mr-5" do %>
                   フォロー<%= @user.followings.count %>
                 <% end %>

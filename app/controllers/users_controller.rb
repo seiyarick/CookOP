@@ -6,6 +6,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @profile_image = @user.profile_image
     @dishes = @user.dishes.all.order("id DESC")
+    @user_dishes = @user.dishes
+    @favorits_count = 0
+
+    @user_dishes.each do |dish|
+      @favorits_count += dish.favorits.count
+    end
+
   end
 
   def edit

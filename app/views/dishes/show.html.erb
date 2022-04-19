@@ -31,7 +31,7 @@
         <% end %>
         </p>
         <% else %>
-        <p class="h4">
+        <p class="h4 mt-1 text-center">
         <%= link_to dish_favorites_path(@dish.id), method: :post do %>
         <i class="fa-regular fa-heart faa-wrench animated-hover" style="color: #ff6347;"></i>  <%= @dish.favorits.count %>
         <% end %>
