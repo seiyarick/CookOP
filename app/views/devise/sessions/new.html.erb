@@ -7,7 +7,7 @@
 
           <div class="row mb-5">
           <%= f.label :名前, class:"col-4 col-form-label text-center" %><br />
-          <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"col-8 form-control" %>
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"col-8 form-control", placeholder:"名前を入力してください" %>
           </div>
 
 
@@ -15,7 +15,7 @@
             <div class="col-4 text-center">
             <i class="fa-solid fa-key"></i><%= f.label :パスワード %><br />
             </div>
-            <%= f.password_field :password, autocomplete: "current-password", class:"col-8 form-control" %>
+            <%= f.password_field :password, autocomplete: "current-password", class:"col-8 form-control", placeholder:"パスワードを入力してください" %>
           </div>
 
 
