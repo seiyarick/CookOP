@@ -1,49 +1,114 @@
 <h1>投稿詳細ページ</h1>
-<h3>
-  <%= link_to user_path(@dish.user_id) do %>
-  <%= @dish.user.name %>
-  <% end %>
-  さんの
-  <%= @dish.dish_name %>
-</h3>
-<%= image_tag @dish.dish_image, size: "400x400" %>
-<%= @dish.dish_name %>
-<%= @dish.created_at %>
-<%= @dish.introduction %>
-<% if @dish.user_id == current_user.id %>
-<%= link_to "編集", edit_dish_path(@dish.id) %>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-7">
+      <p class="created">投稿日 <%= @dish.created_at.strftime('%Y/%m/%d') %></p>
+      <h2 class="my-2 text-center">
+      <%= link_to user_path(@dish.user_id) do %>
+      <%= @dish.user.name %>
+      <% end %>
+      さんの
+      <%= @dish.dish_name%>
+      </h2><br>
+      <% if @dish.user_id == current_user.id %>
+      <%= link_to "編集", edit_dish_path(@dish.id),class:"btn btn-light" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-6">
+      <div class="row justify-content-center">
+      <%= image_tag @dish.dish_image, size: "400x300", class:"mb-3 mx-auto" %><br>
+      </div>
+      <% if @dish.favorited_by?(current_user) %>
 
-<% if @dish.favorited_by?(current_user) %>
- <p>
-   <%= link_to dish_favorites_path(@dish.id), method: :delete do %>
-   <i class="fa-solid fa-heart faa-wrench animated-hover"></i><%= @dish.favorits.count %>いいね
-   <% end %>
- </p>
- <% else %>
- <p>
-   <%= link_to dish_favorites_path(@dish.id), method: :post do %>
-   <i class="fa-regular fa-heart faa-wrench animated-hover"></i><%= @dish.favorits.count %>いいね
-   <% end %>
- </p>
- <% end %>
-<!--お気に入り数--><!--お気に入りボタン♡-->
+        <p class="h4 mt-1 text-center">
+        <%= link_to dish_favorites_path(@dish.id), method: :delete do %>
+        <i class="fa-solid fa-heart faa-wrench animated-hover" style="color: #ff6347;"></i>
+        <%= @dish.favorits.count %>
+        <% end %>
+        </p>
+        <% else %>
+        <p class="h4">
+        <%= link_to dish_favorites_path(@dish.id), method: :post do %>
+        <i class="fa-regular fa-heart faa-wrench animated-hover" style="color: #ff6347;"></i>  <%= @dish.favorits.count %>
+        <% end %>
+        </p>
+      <% end %>
+    </div>
+    <div class="col-lg-6 my-4">
+      <div class="col-10 mx-auto">
 
-<%= form_with model:[@dish,@comment], url: dish_comments_path(@dish.id), method: :post do |f| %>
-<i class="fa-regular fa-comments"></i><%= f.label "新規コメント" %>
-<%= f.text_field :comment_text %>
-<%= f.submit "コメント" %>
-<% end %>
+        <%= @dish.introduction %>
 
-<p>コメント件数:<%= @comments.count %></p>
-<% @comments.each do |comment| %>
-<%= link_to user_path(comment.user_id) do %>
-<%= image_tag comment.user.profile_image, size: "80x80" %>
-<% end %>
-<%= comment.user.name %>
-<%= comment.comment_text %>
-<% if comment.user == current_user %>
-<%= link_to "削除", dish_comment_path(comment.dish,comment), method: :delete %>
-<% end %>
-<% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10">
+    <%= form_with model:[@dish,@comment], url: dish_comments_path(@dish.id), method: :post do |f| %>
+      <div class="row">
+        <div class="col-lg-4 text-center">
+        <i class="fa-regular fa-comments"></i>
+        <strong><%= f.label "新規コメント", class:"col-form-label text-center" %></strong>
+        </div>
+        <div class="col-lg-6">
+        <%= f.text_field :comment_text, class:"form-control" %>
+          <div class="text-right mt-3">
+          <%= f.submit "コメント",class:"btn btn-light" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-10">
+      <p class="ml-4">コメント件数:<%= @comments.count %></p>
+      <% @comments.each do |comment| %>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td class="col-2 text-center">
+            <%= link_to user_path(comment.user_id) do %>
+            <%= image_tag comment.user.profile_image, size: "80x80",class:"rounded-circle mx-auto" %>
+            <% end %>
+            </td>
+            <td class="col-2 text-center h5">
+              <div class="mt-4">
+              <%= link_to user_path(comment.user_id) do %>
+              <%= comment.user.name %>
+              <% end %>
+              </div>
+            </td>
+            <td class="col-6">
+            <%= comment.comment_text %>
+            </td>
+            <td class="col-3 text-center">
+            <% if comment.user == current_user %>
+            <%= link_to "削除", dish_comment_path(comment.dish,comment), method: :delete,class:"btn btn-danger mt-4" %>
+            <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    <!--お気に入り数--><!--お気に入りボタン♡-->
+
+
+
+
 
