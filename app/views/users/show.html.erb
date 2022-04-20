@@ -33,20 +33,14 @@
             <%= @user.profile %>
             </td>
           </tr>
+          <tr>
+            <td class="align-middle text-center">
+            <%= render 'users/follow_buttun',user: @user %><!--部分テンプレート-->
+            </td>
+          </tr>
         </tbody>
       </table>
-      <% if @user.id != current_user.id %>
-        <% if @user.is_followed_by?(current_user) %>
-        <%= link_to "フォロー解除",user_relationships_path(@user.id), method: :delete %>
-        <% else %>
-        <%= link_to "フォロー",user_relationships_path(@user.id), method: :post %>
-        <% end %>
-      <% end %>
-      <div class="text-center">
-       <% if @user.id == current_user.id %>
-        <%= link_to "編集する", edit_user_path(@user.id), class:"btn btn-light" %>
-       <% end %>
-      </div>
+
     </div>
     <div class="col-lg-8 mt-4">
       <h2 class="mb-4 text-center">〜投稿記事一覧〜</h2>
