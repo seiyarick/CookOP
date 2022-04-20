@@ -13,7 +13,7 @@ class DishesController < ApplicationController
   def index
     # @dishes = Dish.all
     @q = Dish.ransack(params[:q])
-    @searchs = @q.result(distinct: true)
+    @searchs = @q.result(distinct: true).order("id DESC")
   end
 
   def edit
