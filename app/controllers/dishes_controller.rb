@@ -7,6 +7,7 @@ class DishesController < ApplicationController
 
   def ranking
     @all_ranks = Dish.create_all_ranks
+    
   end
 
 

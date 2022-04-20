@@ -1,13 +1,67 @@
-<h3>お気に入りランキング</h3>
-<% @all_ranks.each.with_index(1) do |dish,i| %>
-第<%= i %>位
-<%= link_to dish_path(dish.id) do %>
-<%= dish.dish_name %>
-<% end %>
-投稿者
-<%= link_to user_path(dish.user_id) do %>
-<%= dish.user.name %>
-<% end %>
-❤いいね数️<%= dish.favorits.count %>
-<%= image_tag dish.dish_image, size: "100x100" %>
-<% end %>
+<div class="container">
+  <h2 class="my-5">週刊お気に入りランキング</h2>
+  <div class="row justify-content-center">
+    <div class="col-xl-10">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="text-center">順位</th>
+            <th class="text-center">料理写真</th>
+            <th class="text-center">いいね数</th>
+            <th class="text-center">料理名</th>
+            <th class="text-center">投稿者</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @all_ranks.each.with_index(1) do |dish,i| %>
+          <tr>
+            <td class="text-center">
+              <p class="mt-5 h5">
+              <% if i == 1 %>
+              <i class="fa-solid fa-crown  fa-fw faa-wrench animated-hover" style="color:#FFD700;"></i>第<%= i %>位
+              <% elsif i == 2 %>
+              <i class="fa-solid fa-crown  fa-fw faa-wrench animated-hover" style="color:#c9caca;"></i>第<%= i %>位
+              <% elsif i == 3 %>
+              <i class="fa-solid fa-crown  fa-fw faa-wrench animated-hover" style="color:#ab5226;"></i>第<%= i %>位
+              <% else %>
+              第<%= i %>位
+              <% end %>
+              </p>
+            </td>
+            <td class="text-center">
+              <%= image_tag dish.dish_image, size: "150x110" %>
+            </td>
+            <td class="text-center">
+              <p class="mt-5">
+              <i class="fa-solid fa-heart faa-wrench animated-hover" style="color: #ff6347;"></i>いいね数  <%= dish.favorits.count %>
+              </p>
+            </td>
+            <td class="text-center">
+              <p class="mt-5">
+              <%= link_to dish_path(dish.id) do %>
+              <%= dish.dish_name %>
+              <% end %>
+              </p>
+            </td>
+            <td class="text-center">
+              <p class="mt-5">
+              <%= link_to user_path(dish.user_id) do %>
+              <%= dish.user.name %>
+              <% end %>
+              </p>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
