@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row  justify-content-center">
     <div class="col-10 mt-5">
-    <p class="my-5 text-center">CookOP</p>
+    <p class="title">CookOP</p>
       <%= form_with model: @dish, url: dishes_path(current_user.id), method: :post do |f|  %>
       <div class="row mb-4">
       <%= f.label "料理名", class:"col-4 col-form-label text-center" %>

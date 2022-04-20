@@ -9,10 +9,10 @@
       <% end %>
       さんの
       <%= @dish.dish_name%>
-      </h2><br>
       <% if @dish.user_id == current_user.id %>
       <%= link_to "編集", edit_dish_path(@dish.id),class:"btn btn-light" %>
       <% end %>
+      </h2><br>
     </div>
   </div>
 </div>
@@ -40,8 +40,14 @@
     </div>
     <div class="col-lg-6 my-4">
       <div class="col-10 mx-auto">
-
+        
         <%= @dish.introduction %>
+  
+
+
+
+
+
 
       </div>
     </div>

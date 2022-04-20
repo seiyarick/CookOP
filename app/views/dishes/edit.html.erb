@@ -1,16 +1,28 @@
-<h1>投稿編集画面</h1>
-<%= form_with model: @dish, url: dish_path(@dish.id), method: :patch do |f| %>
+<div class="container">
+  <div class="row  justify-content-center">
+    <div class="col-10 mt-5">
+    <p class="my-5 text-center">CookOP</p>
+    <%= form_with model: @dish, url: dish_path(@dish.id), method: :patch do |f| %>
+      <div class="row mb-4">
+      <%= f.label "料理名", class:"col-4 col-form-label text-center" %>
+      <%= f.text_field :dish_name, class:"col-8 form-control", placeholder:"料理名を入力してください。" %>
+      </div>
+      <div class="row mb-4">
+      <%= f.label "料理画像", class:"col-4 col-form-label text-center" %>
+      <%= f.file_field :dish_image, accept: "image/*" %>
+      </div>
+      <div class="row mb-4">
+      <%= f.label "紹介文", class:"col-4 col-form-label text-center" %>
+      <%= f.text_area :introduction, class:"col-8 form-control" %>
+      </div>
+      <div class="row">
+        <div class="col-12 text-right">
+        <%= f.submit "編集する",class:"btn btn-light" %>
+        <%= link_to "削除する", dish_path(@dish.id), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-danger" %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= f.label "料理名" %>
-<%= f.text_field :dish_name %>
-
-<%= f.label "料理画像" %>
-<%= f.file_field :dish_image %>
-
-<%= f.label "紹介文" %>
-<%= f.text_area :introduction %>
-
-<%= f.submit "編集する" %>
-<% end %>
-<%#= link_to "削除する", dishes_confirm_path %>
-<%= link_to "削除する", dish_path(@dish.id), method: :delete, data: {confirm: "削除しますか？"} %>
