@@ -3,6 +3,10 @@ class Dish < ApplicationRecord
   belongs_to :user#, optional: true
   has_many :comments, dependent: :destroy
   has_many :favorits, dependent: :destroy
+  
+  validates :dish_name, presence: true
+  validates :introduction, presence: true
+  validates :dish_image, presence: true
 
   def favorited_by?(user)
     favorits.exists?(user_id: user.id)

@@ -7,7 +7,7 @@ class DishesController < ApplicationController
 
   def ranking
     @all_ranks = Dish.create_all_ranks
-    
+
   end
 
 
@@ -31,8 +31,11 @@ class DishesController < ApplicationController
 
   def create
     @dish = Dish.new(dish_params)
-    @dish.save
+    if @dish.save
     redirect_to user_path(current_user.id)
+    else
+      render :new
+    end
   end
 
   def update

@@ -1,8 +1,19 @@
 <div class="container">
-  <div class="row  justify-content-center">
+  <div class="row justify-content-center">
     <div class="col-10 mt-5">
     <p class="title">CookOP</p>
+
       <%= form_with model: @dish, url: dishes_path(current_user.id), method: :post do |f|  %>
+      <% if @dish.errors.any? %>
+      <div class="row justify-content-center">
+        <%= @dish.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @dish.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
       <div class="row mb-4">
         <%= f.label "料理名", class:"col-4 col-form-label text-center" %>
         <%= f.text_field :dish_name, class:"col-8 form-control", placeholder:"料理名を入力してください。" %>

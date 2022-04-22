@@ -13,7 +13,7 @@
           </tr>
           <tr>
             <td class="align-middle text-center">
-             <i class="fa-solid fa-heart fa-fw faa-wrench animated-hover" style="color: #ff6347;"></i><%= @favorits_count %>
+             みんなからのいいね  <i class="fa-solid fa-heart fa-fw faa-wrench animated-hover" style="color: #ff6347;"></i><%= @favorits_count %>
             </td>
           </tr>
           <tr>
@@ -48,7 +48,7 @@
         <% @dishes.each do |dish| %>
         <div class="dish_image text-center mb-4">
           <%= link_to dish_path(dish.id) do %>
-          <div class="img"><%= image_tag dish.dish_image, size: "150x110" %></div>
+          <%= image_tag dish.dish_image, size: "150x110" %>
           <% end %>
           <%= dish.created_at.strftime('%Y/%m/%d') %><br>
           <%= dish.dish_name %><br>

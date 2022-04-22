@@ -19,8 +19,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 
 body {
-  
+
   font-family: 'Sawarabi Gothic', sans-serif;
   color: #696969;
 }
 
+.field_with_errors {
+  display: contents;
+}
