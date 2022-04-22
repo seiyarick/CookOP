@@ -1,3 +1,56 @@
 // Place all the styles related to the top controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.main-image {
+  width: 100%; /* 横幅いっぱい */
+  height: 500px; /* 高さ300px */
+  background-image: url(top1.jpg);
+  background-size: cover; /* 縦横比を維持したまま背景領域を埋め尽くす */
+  background-position: center; /* 背景画像を中央に配置 */
+}
+
+// .main-image-content {
+//   width: 40%; /* 横幅40% */
+//   height: 400px; /* 親の高さに揃える */
+//   background-color: rgba(0, 0, 0, 0.5); /* 背景色を半透明の黒にする */
+//   text-align: center; /* 文字を中央揃えにする */
+//   padding-top: 105px; /* 上側の内側余白で垂直方向の位置を調整 */
+//   margin: auto;
+// }
+
+// .main-visual-text {
+//   color: #fff; /* 文字色を白に変更 */
+// }
+
+// /* 追加 */
+// .main-visual-name {
+//   margin-top: 30px; /* 上側の外側の余白 */
+//   color: #fff; /* 文字色を白に変更 */
+// }
+.top-image img {
+  width: 100%;
+  height: auto;
+  transition: .3s;
+  opacity: 0.8;
+
+}
+// .top-image-text {
+//   width: 60%;
+//   height: auto;
+//   font-size: 200%;
+//   color:#4d4d4d;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   padding: auto;
+// }
+
+
+/*ホバー時に透明度50%*/
+.top-image img:hover {
+}
+
+
+

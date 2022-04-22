@@ -66,10 +66,10 @@
               </li>
             </div>
             <% else %>
-            <li class="nav-item mr-3">
-              <%= link_to homes_about_path, class:"btn btn-light" do %>
-              <i class="fa-regular fa-eye"></i>About
-              <% end %>
+            <li class="nav-item active mr-3">
+                <%= link_to  root_path, class:"btn btn-light" do %>
+               <i class="fa-solid fa-house-chimney fa-fw faa-wrench animated-hover" style="color:#BDB76B;"></i>トップページ
+               <% end %>
             </li>
             <li class="nav-item mr-3">
               <%= link_to new_user_registration_path, class:"btn btn-light" do %>

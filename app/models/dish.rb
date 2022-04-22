@@ -9,7 +9,11 @@ class Dish < ApplicationRecord
   end
 
   def self.create_all_ranks
-    Dish.find(Favorit.group(:dish_id).where(created_at: Time.current.all_week).order('count(dish_id) desc').limit(10).pluck(:dish_id))
+    Dish.find(Favorit.group(:dish_id).order('count(dish_id) desc').limit(10).pluck(:dish_id))
+  end
+  
+  def html_safe_newline(str)
+   h(str).gsub(/\n|\r|\r\n/, "<br>").html_safe
   end
 
 end

@@ -4,22 +4,18 @@
     <p class="title">CookOP</p>
       <%= form_with model: @dish, url: dishes_path(current_user.id), method: :post do |f|  %>
       <div class="row mb-4">
-      <%= f.label "料理名", class:"col-4 col-form-label text-center" %>
-      <%= f.text_field :dish_name, class:"col-8 form-control", placeholder:"料理名を入力してください。" %>
+        <%= f.label "料理名", class:"col-4 col-form-label text-center" %>
+        <%= f.text_field :dish_name, class:"col-8 form-control", placeholder:"料理名を入力してください。" %>
       </div>
       <div class="row mb-4">
-      <%= f.label "料理画像", class:"col-4 col-form-label text-center" %>
-      <%= f.file_field :dish_image, accept: "image/*" %>
+        <%= f.label "料理画像", class:"col-4 col-form-label text-center" %>
+        <%= f.file_field :dish_image, accept: "image/*" %>
       </div>
       <div class="row mb-4">
-      <%= f.label "紹介文", class:"col-4 col-form-label text-center" %>
-
-
-      <%= f.text_area :introduction,
-      placeholder:"使用した食材や料理の作り方を書いてみんなにシェアしてください。右下の角を下に引っ張ると記入欄が大きくなります。",
-      class:"col-8 form-control" %>
-
-
+        <%= f.label "紹介文", class:"col-4 col-form-label text-center" %>
+        <%= f.text_area :introduction,
+        placeholder:"使用した食材や料理の作り方を書いてみんなにシェアしてください。右下の角を下に引っ張ると記入欄が大きくなります。",
+        class:"col-8 form-control" %>
       </div>
       <div class="row">
         <div class="col-12 text-right">
