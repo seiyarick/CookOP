@@ -8,7 +8,7 @@ class Dish < ApplicationRecord
 
   validates :dish_name, presence: true
   validates :introduction, presence: true
-  validates :dish_image, presence: true
+  validates :dish_image, attached: true, content_type: [:png, :jpg, :jpeg]
 
   def favorited_by?(user)
     favorits.exists?(user_id: user.id)
