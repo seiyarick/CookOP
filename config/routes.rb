@@ -24,6 +24,8 @@ Rails.application.routes.draw do
    get :followings, on: :member#フォローしてるユーザーの一覧画面on: :memberの記述でidを含める記述
    get :followers, on: :member#フォローされているユーザーの一覧画面
   end
+  
+  resources :notifications, only: :index
 
   # get 'dishes/new'
   # get 'dishes/index'

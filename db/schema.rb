@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_09_064638) do
+ActiveRecord::Schema.define(version: 2022_04_23_043645) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2022_04_09_064638) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.string "dish_name"
+    t.string "dish_image"
     t.text "introduction"
   end
 
@@ -56,6 +57,17 @@ ActiveRecord::Schema.define(version: 2022_04_09_064638) do
     t.integer "user_id"
     t.integer "dish_id"
     t.integer "favorits_count"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "dish_id"
+    t.integer "comment_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "relationships", force: :cascade do |t|

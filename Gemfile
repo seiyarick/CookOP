@@ -54,8 +54,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'ransack'
 
 gem 'bootstrap', '~> 4.3.1'
+
 gem 'jquery-rails'
 
 gem 'rails-i18n'
 
 gem 'enum_help'
+
+gem 'kaminari','~> 1.2.1'

@@ -2,9 +2,13 @@
     　<p><%= flash[:notice] %></p>
     </div>
 
+
 <div class="container mt-5">
   <div class="row justify-content-center">
       <div class="col-lg-4 ">
+        <% if @user.id == current_user.id %>
+        <%= link_to "編集", edit_user_path(@user.id),class:"btn btn-light" %>
+        <% end %>
       <div class="row justify-content-center mb-4">
         <%= image_tag @user.get_profile_image,size: "200x200",class:"rounded-circle mx-auto" %>
       </div>

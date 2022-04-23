@@ -14,6 +14,7 @@ class User < ApplicationRecord
  has_many :reverse_of_relationships ,class_name: 'Relationship', foreign_key: :follower_id
  has_many :followers, through: :reverse_of_relationships, source: :following
 
+
  has_one_attached :profile_image
 
   def is_followed_by?(user)
@@ -26,6 +27,19 @@ class User < ApplicationRecord
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     profile_image
+  end
+  
+  def create_notification_follow!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      if notification.valid?
+        notification.save 
+      end  
+    end
   end
 
   

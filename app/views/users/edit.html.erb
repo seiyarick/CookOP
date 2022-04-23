@@ -1,16 +1,38 @@
-<h1>Users#edit</h1>
-<%= form_with model: @user,url: user_path(@user.id), method: :patch do |f| %>
-
-<%= f.label "名前" %>
-<%= f.text_field :name %>
-
-<%= f.label "プロフィール画像" %>
-<%= f.file_field :profile_image %>
-
-<%= f.label "プロフィール" %>
-<%= f.text_area :profile %>
-
-<%= f.submit "編集する" %>
-
-<% end %>
-<%= link_to "退会する", users_confirm_path %>
+<div class="container">
+  <div class="row  justify-content-center">
+    <div class="col-10 mt-5">
+    <h1 class="my-5">登録情報編集画面</h1>
+    <%= form_with model: @user,url: user_path(@user.id), method: :patch do |f| %>
+      <% if @user.errors.any? %>
+      <div class="row justify-content-center">
+        <%= @user.errors.count %>件のエラーが発生しました
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+      <div class="row mb-4 mt-2">
+      <%= f.label "名前", class:"col-4 col-form-label text-center" %>
+      <%= f.text_field :name, class:"col-8 form-control", placeholder:"料理名を入力してください。" %>
+      </div>
+      <div class="row mb-4">
+      <%= f.label "プロフィール画像", class:"col-4 col-form-label text-center" %>
+      <%= f.file_field :profile_image, accept: "image/*" %>
+      </div>
+      <div class="row mb-4">
+      <%= f.label "プロフィール", class:"col-4 col-form-label text-center" %>
+      <%= f.text_area :profile, class:"col-8 form-control" %>
+      </div>
+      <div class="row">
+        <div class="col-12 text-right">
+        <%= f.submit "編集する",class:"btn btn-light" %>
+        <%#= link_to "削除する", dish_path(@dish.id), method: :delete, data: {confirm: "削除しますか？"}, class:"btn btn-danger" %>
+        <%#= link_to "退会する", users_confirm_path %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
