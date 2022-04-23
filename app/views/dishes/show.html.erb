@@ -1,4 +1,9 @@
-<h1>投稿詳細ページ</h1>
+
+
+<div class="flash">
+    　<p><%= flash[:comment] %></p>
+    </div>
+
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-7">
@@ -40,7 +45,9 @@
       <% end %>
     </div>
     <div class="dish-show-border my-4">
+      <hr>
        <%= h(@dish.introduction).gsub(/\n|\r|\r\n/, "<br>").html_safe %>
+       <hr>
     </div>
   </div>
 </div>

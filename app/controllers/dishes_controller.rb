@@ -32,7 +32,9 @@ class DishesController < ApplicationController
   def create
     @dish = Dish.new(dish_params)
     if @dish.save
-    redirect_to user_path(current_user.id)
+
+      redirect_to user_path(current_user.id), flash: {notice: "投稿が完了しました"}
+
     else
       render :new
     end
@@ -40,8 +42,11 @@ class DishesController < ApplicationController
 
   def update
     dish = Dish.find(params[:id])
-    dish.update(dish_params)
-    redirect_to dish_path(dish.id)
+    if dish.update(dish_params)
+      redirect_to dish_path(dish.id)
+    else
+      render :edit
+    end
   end
 
   def confirm

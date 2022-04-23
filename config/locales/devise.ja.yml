@@ -1,0 +1,15 @@
+ja:
+  activerecord:
+    attributes:
+      dish:
+        dish_name: "料理名"
+        introduction: "紹介文"
+        dish_image: "画像"
+
+
+# ja:
+#   enums:
+#     dish:
+#       dish_name: "料理名"
+#       introduction: "紹介文"
+#       dish_image: "画像"

@@ -2,18 +2,20 @@ class CommentsController < ApplicationController
   def create
     dish = Dish.find(params[:dish_id])
     comment = Comment.new(comment_params)
-
     comment.user_id = current_user.id
     comment.dish_id = dish.id
-
-    comment.save
-    redirect_to dish_path(dish.id)
+    if comment.save
+      redirect_to dish_path(dish.id), flash: {comment: "コメントしました"}
+    else
+      redirect_to dish_path(dish.id)
+    end
   end
-  
+
   def destroy
-    
+
     Comment.find(params[:id]).destroy
     redirect_to dish_path(params[:dish_id])
+    
   end
 
 
