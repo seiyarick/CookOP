@@ -5,17 +5,19 @@
     <%= form_with model: @user,url: user_path(@user.id), method: :patch do |f| %>
       <% if @user.errors.any? %>
       <div class="row justify-content-center">
+        <div class="alert alert-warning">
         <%= @user.errors.count %>件のエラーが発生しました
         <ul>
           <% @user.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
         </ul>
+        </div>
       </div>
       <% end %>
       <div class="row mb-4 mt-2">
       <%= f.label "名前", class:"col-4 col-form-label text-center" %>
-      <%= f.text_field :name, class:"col-8 form-control", placeholder:"料理名を入力してください。" %>
+      <%= f.text_field :name, class:"col-8 form-control", placeholder:"名前を入力してください。" %>
       </div>
       <div class="row mb-4">
       <%= f.label "プロフィール画像", class:"col-4 col-form-label text-center" %>
@@ -23,7 +25,7 @@
       </div>
       <div class="row mb-4">
       <%= f.label "プロフィール", class:"col-4 col-form-label text-center" %>
-      <%= f.text_area :profile, class:"col-8 form-control" %>
+      <%= f.text_area :profile, class:"col-8 form-control", placeholder:"100文字以内で入力してください。" %>
       </div>
       <div class="row">
         <div class="col-12 text-right">

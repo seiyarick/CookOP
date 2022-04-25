@@ -7,7 +7,7 @@ class Dish < ApplicationRecord
 
 
   validates :dish_name, presence: true
-  validates :introduction, presence: true
+  validates :introduction, presence: true, length: { maximum: 300 }
   validates :dish_image, attached: true, content_type: [:png, :jpg, :jpeg]
 
   def favorited_by?(user)

@@ -41,11 +41,11 @@ class DishesController < ApplicationController
   end
 
   def update
-    dish = Dish.find(params[:id])
-    if dish.update(dish_params)
-      redirect_to dish_path(dish.id)
+    @dish = Dish.find(params[:id])
+    if @dish.update(dish_params)
+      redirect_to dish_path(@dish.id)
     else
-      render :edit
+      render 'edit'
     end
   end
 

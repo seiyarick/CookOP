@@ -2,6 +2,8 @@ ja:
   activerecord:
     attributes:
       user:
+        name: "名前"
+        profile: "プロフィール"
         dish_name: "料理名"
         introduction: "紹介文"
         dish_image: "画像"
