@@ -28,20 +28,20 @@ class User < ApplicationRecord
     end
     profile_image
   end
-  
-  def create_notification_follow!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
-    if temp.blank?
-      notification = current_user.active_notifications.new(
-        visited_id: id,
-        action: 'follow'
-      )
-      if notification.valid?
-        notification.save 
-      end  
-    end
-  end
 
-  
+  # def create_notification_follow!(current_user)
+  #   temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+  #   if temp.blank?
+  #     notification = current_user.active_notifications.new(
+  #       visited_id: id,
+  #       action: 'follow'
+  #     )
+  #     if notification.valid?
+  #       notification.save
+  #     end
+  #   end
+  # end
+
+
 end
 

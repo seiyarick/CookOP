@@ -38,7 +38,7 @@
           </tr>
           <tr>
             <td class="align-middle text-center">
-            <%= @user.profile %>
+            <%= h(@user.profile).gsub(/\n|\r|\r\n/, "<br>").html_safe %>
             </td>
           </tr>
           <tr>
