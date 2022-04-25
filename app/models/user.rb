@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :profile, length: { maximum: 100 }
-  validates :name, presence: true
-  validates :profile_image, attached: true,presence: true,content_type: [:png, :jpg, :jpeg, :webp]
+  validates :name, presence: true, length: { maximum: 15 }
+  # validates :profile_image, attached: true,content_type: [:png, :jpg, :jpeg, :webp]
 
   has_many :dishes, dependent: :destroy
   has_many :favorits, dependent: :destroy

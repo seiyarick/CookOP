@@ -27,7 +27,14 @@ class UsersController < ApplicationController
       render 'users/edit'
     end
   end
-
+  
+  def update_delete
+    user=current_user
+    user.update(is_deleted: true)#updateと同時にis_deleted: true として退会状態にする　＊is_deleted ・・・退会していますか
+    reset_session#セッション情報を全て削除
+    redirect_to root_path
+  end
+  
   def confirm
   end
 

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'dishes/confirm' => 'dishes#confirm'
   get 'dishes/search' => 'dishes#search'
   get 'dishes/ranking' => 'dishes#ranking'
+  patch 'users/update_delete' => 'users#update_delete'
 
   resources :dishes, only:[:new, :index, :edit, :show, :create, :update, :destroy, :search] do
    resource :favorites, only:[:create, :destroy]
