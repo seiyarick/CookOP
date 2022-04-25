@@ -14,7 +14,7 @@ class DishesController < ApplicationController
   def index
     # @dishes = Dish.all
     @q = Dish.ransack(params[:q])
-    @searchs = @q.result(distinct: true).order("id DESC")
+    @searchs = @q.result(distinct: true).page(params[:page]).order("id DESC")
   end
 
   def edit

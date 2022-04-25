@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @profile_image = @user.profile_image
-    @dishes = @user.dishes.all.order("id DESC")
+    @dishes = @user.dishes.all.order("id DESC").page(params[:page])
     @user_dishes = @user.dishes
     @favorits_count = 0
 
@@ -27,14 +27,14 @@ class UsersController < ApplicationController
       render 'users/edit'
     end
   end
-  
+
   def update_delete
     user=current_user
     user.update(is_deleted: true)#updateと同時にis_deleted: true として退会状態にする　＊is_deleted ・・・退会していますか
     reset_session#セッション情報を全て削除
     redirect_to root_path
   end
-  
+
   def confirm
   end
 
