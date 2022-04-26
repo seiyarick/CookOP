@@ -22,6 +22,7 @@
 
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <% if user_signed_in? %>
+
             <div class="my-auto mr-5">
               <li class="nav-item active mr-3">
                 <%= link_to  root_path, class:"btn btn-light" do %>
@@ -59,6 +60,16 @@
               </li>
             </div>
             <div class="my-auto mr-5">
+              <li class="nav-item mr-3 mb-">
+                <% if unchecked_notifications.any? %>
+                  <i class="fa fa-circle" style="color: gold;"></i>
+                <% end %>
+                <li>
+                  <%= link_to notifications_path, class:"btn btn-light" do %>
+                  <i class="fa-solid fa-bell fa-fw faa-wrench animated-hover" style="color:#ffdc00"></i>通知
+                  <% end %>
+                </li>
+              </li>
               <li class="nav-item mr-3 mb-">
                  <%= link_to destroy_user_session_path, method: :delete, class:"btn btn-light" do %>
                  <%= image_tag "log_out.png",size: "20x20" %>ログアウト

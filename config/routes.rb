@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'dishes/search' => 'dishes#search'
   get 'dishes/ranking' => 'dishes#ranking'
   patch 'users/update_delete' => 'users#update_delete'
+  delete 'notifications/destroy_all' => 'notifications#destroy_all'
 
   resources :dishes, only:[:new, :index, :edit, :show, :create, :update, :destroy, :search] do
    resource :favorites, only:[:create, :destroy]
@@ -25,9 +26,9 @@ Rails.application.routes.draw do
    get :followings, on: :member#フォローしてるユーザーの一覧画面on: :memberの記述でidを含める記述
    get :followers, on: :member#フォローされているユーザーの一覧画面
   end
-  
-  resources :notifications, only: :index
 
-  
+  resources :notifications, only:[:index]
+
+
 
 end

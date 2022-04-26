@@ -9,10 +9,15 @@ class RelationshipsController < ApplicationController
   end
 
   def create
-    # @user = User.find(params[:relationship][:following_id])
-    following = current_user.relationships.build(follower_id: params[:user_id])#current_userにはfollow_id,follower_idにはuser_idが
-    following.save
-    following.create_notification_follow!(current_user)
+    current_user.follow(params[:user_id])
+
+
+    @user = User.find(params[:user_id])
+    #following = current_user.relationships.build(follower_id: params[:user_id])#current_userにはfollow_id,follower_idにはuser_idが
+
+    # following.save
+    @user.create_notification_follow!(current_user)#通知の作成
+
     redirect_to request.referrer || root_path#request.referrerでもとの画面に戻ってくる。なければルートパス
 
   end
