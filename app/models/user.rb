@@ -12,14 +12,16 @@ class User < ApplicationRecord
   has_many :favorits, dependent: :destroy
   has_many :comments, dependent: :destroy
 
- has_many :relationships, foreign_key: :following_id
- has_many :followings, through: :relationships, source: :follower
+  has_many :relationships, foreign_key: :following_id
+  has_many :followings, through: :relationships, source: :follower
 
- has_many :reverse_of_relationships ,class_name: 'Relationship', foreign_key: :follower_id
- has_many :followers, through: :reverse_of_relationships, source: :following
+  has_many :reverse_of_relationships ,class_name: 'Relationship', foreign_key: :follower_id
+  has_many :followers, through: :reverse_of_relationships, source: :following
 
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
- has_one_attached :profile_image
+  has_one_attached :profile_image
 
   def is_followed_by?(user)
     reverse_of_relationships.find_by(following_id: user.id).present?
@@ -33,18 +35,16 @@ class User < ApplicationRecord
     profile_image
   end
 
-  # def create_notification_follow!(current_user)
-  #   temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
-  #   if temp.blank?
-  #     notification = current_user.active_notifications.new(
-  #       visited_id: id,
-  #       action: 'follow'
-  #     )
-  #     if notification.valid?
-  #       notification.save
-  #     end
-  #   end
-  # end
+  def create_notification_follow!(current_user)
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    if temp.blank?#tenpが空ならばtrue
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?#エラーが発生しなければtrue
+    end
+  end  
 
 
 end
