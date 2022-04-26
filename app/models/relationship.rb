@@ -12,4 +12,5 @@ class Relationship < ApplicationRecord
       notification.save if notification.valid?#エラーが発生しなければtrue
     end
   end
+  
 end

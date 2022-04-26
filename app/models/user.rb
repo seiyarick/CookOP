@@ -36,7 +36,7 @@ class User < ApplicationRecord
   end
 
   def create_notification_follow!(current_user)
-    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+     temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
     if temp.blank?#tenpが空ならばtrue
       notification = current_user.active_notifications.new(
         visited_id: id,
@@ -44,8 +44,32 @@ class User < ApplicationRecord
       )
       notification.save if notification.valid?#エラーが発生しなければtrue
     end
-  end  
+  end
 
+  # def follow(other_user)
+  #   unless self == other_user
+  #     self.relationships.find_or_create_by(follow_id: other_user.id)
+  #   end
+  # end
 
+  # def unfollow(other_user)
+  #   relationship = self.relationships.find_by(follow_id: other_user.id)
+  #   relationship.destroy if relationship
+  # end
+
+  # def following?(other_user)
+  #   self.followings.include?(other_user)
+  # end
+  def follow(user_id)
+  relationships.create(follower_id: user_id)
+  end
+  # フォローを外すときの処理
+  def unfollow(user_id)
+    relationships.find_by(following_id: user_id).destroy
+  end
+  # フォローしているか判定
+  def following?(user)
+    followings.include?(user)
+  end
 end
 

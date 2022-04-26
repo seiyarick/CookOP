@@ -6,7 +6,7 @@ class NotificationsController < ApplicationController
         @notifications = current_user.passive_notifications
       #@notificationの中でまだ確認していない(indexに一度も遷移していない)通知のみ
         @notifications.where(checked: false).each do |notification|
-            notification.update_attributes(checked: true)
+            notification.update(checked: true)
         end
    
   end
@@ -14,6 +14,6 @@ class NotificationsController < ApplicationController
   def destroy_all
       #通知を全削除
         @notifications = current_user.passive_notifications.destroy_all
-        redirect_to users_notifications_path
+        redirect_to notifications_path
   end
 end
