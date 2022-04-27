@@ -8,15 +8,10 @@
           <%= f.label "名前", class:"col-4 col-form-label text-center" %><br />
           <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"col-8 form-control", placeholder:"名前を入力してください" %>
           </div>
-
-
-
           <div class="row mb-5">
           <%= f.label "email", class:"col-4 col-form-label text-center" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-8 form-control", placeholder:"メールアドレスを入力してください" %>
           </div>
-
-
           <div class="row mb-5">
             <div class="col-4 text-center col-form-label">
             <i class="fa-solid fa-key"></i><%= f.label "パスワード" %>
@@ -26,28 +21,25 @@
             </div>
             <%= f.password_field :password, autocomplete: "new-password", class:"col-8 form-control", placeholder:"パスワードを入力してください" %>
           </div>
-
           <div class="row mb-5">
             <div class="col-4 text-center col-form-label">
             <%= f.label "パスワード確認" %><br />
             </div>
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"col-8 form-control", placeholder:"再度パスワードを入力してください" %>
           </div>
-
-        <% if devise_mapping.rememberable? %>
-          <div class="row mb-5">
-            <div class="col-12 text-right">
-            <%= f.check_box :remember_me %>
-            <%= f.label "パスワードを保存する" %>
+          <% if devise_mapping.rememberable? %>
+            <div class="row mb-5">
+              <div class="col-12 text-right">
+              <%= f.check_box :remember_me %>
+              <%= f.label "パスワードを保存する" %>
+              </div>
+            </div>
+          <% end %>
+          <div class="row">
+            <div class="mx-auto">
+            <%= f.submit "新規登録する",class:"btn btn-light"%>
             </div>
           </div>
-        <% end %>
-
-        <div class="row">
-          <div class="mx-auto">
-          <%= f.submit "新規登録する",class:"btn btn-light"%>
-          </div>
-        </div>
     <% end %>
     </div>
   </div>
