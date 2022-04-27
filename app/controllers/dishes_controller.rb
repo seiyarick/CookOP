@@ -9,6 +9,7 @@ class DishesController < ApplicationController
   end
 
   def index
+    # @dishes = Dish.all
     @q = Dish.ransack(params[:q])
     @searchs = @q.result(distinct: true).page(params[:page]).order("id DESC")
   end
@@ -41,6 +42,10 @@ class DishesController < ApplicationController
     end
   end
 
+  def confirm
+
+  end
+
   def search
     @q = Dish.ransack(params[:q])
     @dishes = @q.result(distinct: true)
@@ -59,6 +64,7 @@ class DishesController < ApplicationController
 
   def dish_params
     params.require(:dish).permit(:dish_name, :introduction, :user_id, :dish_image).merge(user_id: current_user.id)
+
   end
 
 end
