@@ -125,4 +125,4 @@ https://docs.google.com/spreadsheets/d/1dVPSWAGel7oZNpU6nrQCdUVyvIr61GfbohVLGGt3
 ### ＊フォント
 #### Google Fonts
 - https://fonts.google.com/specimen/M+PLUS+Rounded+1c#standard-styles
-使用検討中です
+
