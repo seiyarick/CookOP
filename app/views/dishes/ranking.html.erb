@@ -13,18 +13,27 @@
           </tr>
         </thead>
         <tbody>
+          <% last_favorit = 0 %>
+          <% j = 1 %>
           <% @all_ranks.each.with_index(1) do |dish,i| %>
           <tr>
             <td class="text-center">
               <p class="mt-5 h5">
-              <% if i == 1 %>
-              <i class="fa-solid fa-crown  fa-fw faa-wrench animated-hover" style="color:#FFD700;"></i>第<%= i %>位
-              <% elsif i == 2 %>
-              <i class="fa-solid fa-crown  fa-fw faa-wrench animated-hover" style="color:#c9caca;"></i>第<%= i %>位
-              <% elsif i == 3 %>
-              <i class="fa-solid fa-crown  fa-fw faa-wrench animated-hover" style="color:#ab5226;"></i>第<%= i %>位
-              <% else %>
-              第<%= i %>位
+              <% if dish.favorits.count != last_favorit %>
+                <% j = i %>
+                <% if i == 1 %>
+                <i class="fa-solid fa-crown  fa-fw faa-wrench animated-hover" style="color:#FFD700;"></i>第<%= j %>位
+                  <% last_favorit = dish.favorits.count %>
+                <% elsif i == 2 %>
+                <i class="fa-solid fa-crown  fa-fw faa-wrench animated-hover" style="color:#c9caca;"></i>第<%= j %>位
+                  <% last_favorit = dish.favorits.count %>
+                <% elsif i == 3 %>
+                <i class="fa-solid fa-crown  fa-fw faa-wrench animated-hover" style="color:#ab5226;"></i>第<%= j %>位
+                  <% last_favorit = dish.favorits.count %>
+                <% else %>
+                <% last_favorit = dish.favorits.count %>
+                第<%= j %>位
+                <% end %>
               <% end %>
               </p>
             </td>
