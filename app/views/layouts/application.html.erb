@@ -61,10 +61,10 @@
             </div>
             <div class="my-auto mr-5">
               <li class="nav-item mr-3 mb-">
+                <li>
                 <% if unchecked_notifications.any? %>
                   <i class="fa fa-circle" style="color: gold;"></i>
                 <% end %>
-                <li>
                   <%= link_to notifications_path, class:"btn btn-light" do %>
                   <i class="fa-solid fa-bell fa-fw faa-wrench animated-hover" style="color:#ffdc00"></i>通知
                   <% end %>
