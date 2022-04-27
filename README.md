@@ -1,4 +1,6 @@
 # CookOP 
+<img width="1066" alt="スクリーンショット 2022-04-27 12 07 56" src="https://user-images.githubusercontent.com/98798536/165432182-a56e44e8-8a0c-4764-89b4-658fd6e6338f.png">
+
 
 ## サイト概要
 
@@ -77,15 +79,10 @@
 
 - お気に入りされた数が多い順にランキングで表示することができる。
 
-## 以下は検討中
+１2　 フォロー通知機能
 
-１　 いいね、コメント、フォロー通知機能
+- フォローされると通知がアプリ上で届く。
 
-- いいね、コメント、フォローされると通知がアプリ上で届く。
-
-２　　SNS認証・ログイン
-
-- メールアドレス、パスワードを入力せずにユーザーと認識されログインできる。
 
 
 
@@ -100,9 +97,8 @@
 - 頑張って作った料理を発信したい方。
 
 ## 主な利用シーン
-
+ 
  家庭での日々の料理を何にしようかと悩んだ時、頑張って作った料理を誰かに見てもらいたいときなど。
-## 設計書
 
 
 ## チャレンジ要素一覧
@@ -116,5 +112,17 @@ https://docs.google.com/spreadsheets/d/1dVPSWAGel7oZNpU6nrQCdUVyvIr61GfbohVLGGt3
 - IDE：Cloud9
 
 ## 使用素材
+### ＊ロゴ
+#### LOGO MAKER
+- https://logo-maker.stores.jp/
 
+### ＊アイコン
+#### Font Awesome
+- https://fontawesome.com/
+#### ICOOON MONO
+- https://icooon-mono.com/
+
+### ＊フォント
+#### Google Fonts
+- https://fonts.google.com/specimen/M+PLUS+Rounded+1c#standard-styles
 使用検討中です
