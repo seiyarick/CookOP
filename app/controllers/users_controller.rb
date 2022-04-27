@@ -8,11 +8,9 @@ class UsersController < ApplicationController
     @dishes = @user.dishes.all.order("id DESC").page(params[:page])
     @user_dishes = @user.dishes
     @favorits_count = 0
-
     @user_dishes.each do |dish|
       @favorits_count += dish.favorits.count
     end
-
   end
 
   def edit
@@ -30,8 +28,8 @@ class UsersController < ApplicationController
 
   def update_delete
     user=current_user
-    user.update(is_deleted: true)#updateと同時にis_deleted: true として退会状態にする　＊is_deleted ・・・退会していますか
-    reset_session#セッション情報を全て削除
+    user.update(is_deleted: true)
+    reset_session
     redirect_to root_path
   end
 
