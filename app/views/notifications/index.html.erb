@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row  justify-content-center">
+  <div class="row justify-content-center">
     <div class="col-xl-8">
       <h2 class="text-center my-4">通知</h2>
           <%= link_to notifications_destroy_all_path, method: :delete do %>
@@ -8,9 +8,11 @@
           <% end %>
           <hr>
       <% if @notifications.exists? %>
-          <div class="text-center users-index">
+        <div class="row justify-content-center">
+          <div class="col-xl-8 users-index">
             <%= render @notifications %>
           </div>
+        </div>
       <% else %>
           <p>通知はありません</p>
       <% end %>
