@@ -14,7 +14,7 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-xl navbar-light bg-light">
-        <%= image_tag "logo.png",size: "200x100", class: "mr-5 ml-3"%><!--ロゴ、リンク-->
+        <%= image_tag asset_path("logo.png"),size: "200x100", class: "mr-5 ml-3"%><!--ロゴ、リンク-->
         <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="レスポンシブ・ナビゲーションバー">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -55,7 +55,7 @@
               </li>
               <li class="nav-item mr-3">
                 <%= link_to  user_path(current_user.id), class:"btn btn-light" do %>
-                <%= image_tag "user.png",size: "20x20" %>マイページ
+                <%= image_tag asset_path("user.png"),size: "20x20" %>マイページ
                 <% end %>
               </li>
             </div>
@@ -72,7 +72,7 @@
               </li>
               <li class="nav-item mr-3 mb-">
                  <%= link_to destroy_user_session_path, method: :delete, class:"btn btn-light" do %>
-                 <%= image_tag "log_out.png",size: "20x20" %>ログアウト
+                 <%= image_tag asset_path("log_out.png"),size: "20x20" %>ログアウト
                  <% end %>
               </li>
             </div>
@@ -84,12 +84,12 @@
             </li>
             <li class="nav-item mr-3">
               <%= link_to new_user_registration_path, class:"btn btn-light" do %>
-              <%= image_tag "new.png",size: "20x20" %>新規登録
+              <%= image_tag asset_path("new.png"),size: "20x20" %>新規登録
               <% end %>
             </li>
             <li class="nav-item mr-3">
              <%= link_to new_user_session_path, class:"btn btn-light" do %>
-             <%= image_tag "log_in.black.png",size: "20x20" %>ログイン
+             <%= image_tag asset_path("log_in.black.png"),size: "20x20" %>ログイン
              <% end %>
             </li>
             <% end %>
