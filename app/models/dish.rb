@@ -3,7 +3,7 @@ class Dish < ApplicationRecord
   belongs_to :user#, optional: true
   has_many :comments, dependent: :destroy
   has_many :favorits, dependent: :destroy
-
+  has_many :notifications, dependent: :destroy
 
 
   validates :dish_name, presence: true
@@ -21,6 +21,24 @@ class Dish < ApplicationRecord
 
   def html_safe_newline(str)
    h(str).gsub(/\n|\r|\r\n/, "<br>").html_safe
+  end
+
+  def create_notification_favorite!(current_user)
+    # すでに「いいね」されているか検索
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and dish_id = ? and action = ? ", current_user.id, user_id, id, 'favorite'])
+    # いいねされていない場合のみ、通知レコードを作成
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        dish_id: id,
+        visited_id: user_id,
+        action: 'favorite'
+      )
+      # 自分の投稿に対するいいねの場合は、通知済みとする
+      if notification.visiter_id == notification.visited_id
+        notification.checked = true
+      end
+      notification.save if notification.valid?
+    end
   end
 
 
