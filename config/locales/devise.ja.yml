@@ -41,6 +41,8 @@ ja:
         dish_name: "料理名"
         introduction: "紹介文"
         dish_image: "画像"
+      comment:
+        comment_text: "コメント"
     models:
       user: ユーザー
   devise:

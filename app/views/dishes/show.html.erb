@@ -1,5 +1,5 @@
 <div class="flash">
-  <p><%= flash[:comment] %></p>
+
 </div>
 <div class="container">
   <div class="row justify-content-center">
@@ -54,6 +54,18 @@
         </div>
       </div>
     <%= form_with model:[@dish,@comment], url: dish_comments_path(@dish.id), method: :post do |f| %>
+    <% if @comment.errors.any? %>
+      <div class="row justify-content-center">
+        <div class="alert alert-warning">
+        <%= @comment.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @comment.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+      <% end %>
       <div class="row">
         <div class="col-lg-4 text-center">
         <i class="fa-regular fa-comments"></i>
