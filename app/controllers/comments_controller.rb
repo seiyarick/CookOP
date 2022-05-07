@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
 
     if comment.save
       comment.create_notification_comment!(current_user, comment.id)
+
       redirect_to dish_path(dish.id), flash: {comment: "コメントしました"}
     else
       @comment = comment
