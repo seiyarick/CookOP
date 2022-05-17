@@ -1,5 +1,5 @@
 class DishesController < ApplicationController
-  before_action :ensure_user, only: [:edit, :update, :destroy]
+  before_action :ensure_dish, only: [:edit, :update, :destroy]
 
   def new
     @dish = Dish.new
@@ -67,7 +67,7 @@ class DishesController < ApplicationController
     params.require(:dish).permit(:dish_name, :introduction, :user_id, :dish_image).merge(user_id: current_user.id)
   end
 
-  def ensure_user
+  def ensure_dish
     @dishes = current_user.dishes
     @dish = @dishes.find_by(id: params[:id])
     redirect_to new_dish_path unless @dish

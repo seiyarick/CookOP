@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :ensure_user, only: [:edit, :update, :destroy]
+
   def new
   end
 
@@ -55,5 +57,14 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :profile_image, :profile)
+  end
+
+  def ensure_user
+    if current_user.id != params[:id].to_i
+      flash[:notice]="権限がありません"
+      redirect_to user_path(current_user.id)
+    # @user = current_user
+    # redirect_to root_path unless @user
+    end
   end
 end
