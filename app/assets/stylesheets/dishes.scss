@@ -36,3 +36,9 @@
 .field_with_errors {
   display: contents;
 }
+
+.thumbnail{
+  width: 150px;
+  height: 110px;
+  object-fit: cover; //or contaion
+}
