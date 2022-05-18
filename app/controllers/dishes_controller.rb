@@ -70,6 +70,7 @@ class DishesController < ApplicationController
   def ensure_dish
     @dishes = current_user.dishes
     @dish = @dishes.find_by(id: params[:id])
+    flash[:notice]="権限がありません"
     redirect_to new_dish_path unless @dish
   end
 
