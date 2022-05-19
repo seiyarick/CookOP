@@ -23,23 +23,10 @@
     <div class="col-lg-6">
       <div class="row justify-content-center">
         <div class="dish-show-image">
-        <%= image_tag @dish.dish_image, class:"thumbnail2 mb-3 mx-auto" %><br>
+        <%= image_tag @dish.dish_image, class:"thumbnail4 mb-3 mx-auto" %><br>
         </div>
       </div>
-      <% if @dish.favorited_by?(current_user) %>
-        <p class="h4 mt-1 text-center">
-        <%= link_to dish_favorites_path(@dish.id), method: :delete do %>
-        <i class="fa-solid fa-heart faa-wrench animated-hover" style="color: #ff6347;"></i>
-        <%= @dish.favorits.count %>
-        <% end %>
-        </p>
-        <% else %>
-        <p class="h4 mt-1 text-center">
-        <%= link_to dish_favorites_path(@dish.id), method: :post do %>
-        <i class="fa-regular fa-heart faa-wrench animated-hover" style="color: #ff6347;"></i>  <%= @dish.favorits.count %>
-        <% end %>
-        </p>
-      <% end %>
+      <%= render 'dishes/favorite', dish: @dish %>
     </div>
   </div>
 </div>
