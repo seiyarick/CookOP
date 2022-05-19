@@ -17,6 +17,13 @@ img {
 
 }
 
+.thumbnail{
+  width: 150px;
+  height: 110px;
+  object-fit: cover;
+}
+
+
 // .index_images{
 //   display: flex;
 //   flex-wrap: wrap;
