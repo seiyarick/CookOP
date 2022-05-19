@@ -10,7 +10,7 @@
         <%= link_to "編集", edit_user_path(@user.id),class:"btn btn-light" %>
         <% end %>
       <div class="row justify-content-center mb-4">
-        <%= image_tag @user.get_profile_image,size: "200x200",class:"rounded-circle mx-auto" %>
+        <%= image_tag @user.get_profile_image,class:"user-image rounded-circle mx-auto" %>
       </div>
       <table class="table mx-auto">
         <tbody>
