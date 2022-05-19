@@ -26,7 +26,9 @@
         <%= image_tag @dish.dish_image, class:"thumbnail4 mb-3 mx-auto" %><br>
         </div>
       </div>
-      <%= render 'dishes/favorite', dish: @dish %>
+      <div id="favorite_btn_<%= @dish.id %>">
+        <%= render 'dishes/favorite', dish: @dish %>
+      </div>
     </div>
   </div>
 </div>
@@ -78,7 +80,7 @@
           <tr>
             <td class="col-2 text-center">
             <%= link_to user_path(comment.user_id) do %>
-            <%= image_tag comment.user.profile_image, size: "80x80",class:"rounded-circle mx-auto" %>
+            <%= image_tag comment.user.profile_image, class:"comment-user-image rounded-circle mx-auto" %>
             <% end %>
             </td>
             <td class="col-2 text-center h5">
