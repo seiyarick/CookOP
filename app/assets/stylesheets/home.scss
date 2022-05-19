@@ -35,22 +35,10 @@
   opacity: 0.8;
 
 }
-// .top-image-text {
-//   width: 60%;
-//   height: auto;
-//   font-size: 200%;
-//   color:#4d4d4d;
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   padding: auto;
-// }
 
-
-/*ホバー時に透明度50%*/
-.top-image img:hover {
+.top-image2{
+  width: 600px;
+  height: 300px;
+  object-fit: cover;
 }
-
-
 

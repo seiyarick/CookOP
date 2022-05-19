@@ -2,7 +2,7 @@
       <table class="table">
         <tbody>
           <tr class="row  justify-content-center" style="height: 75px">
-            <td class="col-4 text-center"><%= image_tag user.get_profile_image, size: "70x70",class:"rounded-circle" %></td>
+            <td class="col-4 text-center"><%= image_tag user.get_profile_image, class:"thumbnail2 rounded-circle" %></td>
             <td class="col-4 text-center">
               <%= link_to user_path(user.id) do %>
               <p class="my-4 h5"><%= user.name %></p>
