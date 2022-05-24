@@ -29,8 +29,10 @@
       </div>
       <div class="row">
         <div class="col-12 text-right">
+        <% if current_user.email != "guest@example.com"  %>
         <%= f.submit "編集する",class:"btn btn-light" %>
         <%= link_to "退会する", users_confirm_path, class:"btn btn-danger" %>
+        <% end %>
         </div>
       <% end %>
       </div>

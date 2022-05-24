@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get 'dishes/ranking' => 'dishes#ranking'
   patch 'users/update_delete' => 'users#update_delete'
   delete 'notifications/destroy_all' => 'notifications#destroy_all'
-
+  post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
+  
   resources :dishes, only:[:new, :index, :edit, :show, :create, :update, :destroy, :search] do
    resource :favorites, only:[:create, :destroy]
    resources :comments, only:[:create, :destroy]
